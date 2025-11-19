@@ -61,3 +61,8 @@ export:
   imgsz: 192                  # Export image size
   half: true                  # FP16 quantization
   int8: false                 # INT8 quantization
+
+wandb:
+  project: "bottle-cap-color-detection"
+  entity: "andhikaagung79-task"
+  enabled: true

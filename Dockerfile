@@ -31,4 +31,4 @@ RUN pip install --no-cache-dir -e .
 ENTRYPOINT ["bsort"]
 
 # Default command (show help)
-CMD ["--help"]
+CMD ["--help"]git add Dockerfile

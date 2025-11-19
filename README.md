@@ -143,7 +143,7 @@ wandb:
 
 View all experiments and model artifacts:
 
-🔗 **[W&B Project Dashboard](https://wandb.ai/your-username/bottle-cap-color-detection)**
+🔗 **[W&B Project Dashboard](https://wandb.ai/andhikaagung79-task/bottle-cap-color-detection)**
 
 ## Project Structure
 
