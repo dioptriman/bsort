@@ -4,7 +4,7 @@ A real-time computer vision system for detecting and classifying bottle caps by 
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-[![CI/CD](https://github.com/yourusername/bsort/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/bsort/actions)
+[![CI/CD](https://github.com/yourusername/bsort/actions/workflows/ci.yml/badge.svg)](https://github.com/dioptriman/bsort/actions)
 
 ## Overview
 
@@ -116,10 +116,10 @@ wandb:
 
 | Metric | Value |
 |--------|-------|
-| mAP50 | TBD |
-| mAP50-95 | TBD |
-| Precision | TBD |
-| Recall | TBD |
+| mAP50 | 0.9950 |
+| mAP50-95 | 0.9812 |
+| Precision | 0.9808 |
+| Recall | 1.0000 |
 
 ### Inference Speed
 
