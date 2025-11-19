@@ -1,0 +1,63 @@
+# Bottle Cap Sorting Model Configuration
+# Usage: bsort train --config settings.yaml
+#        bsort infer --config settings.yaml --image sample.jpg
+
+# Model settings
+model:
+  weights: "models/best.pt"  # Path to model weights
+  imgsz: 192                  # Input image size (optimized for RPi5)
+  conf: 0.5                   # Confidence threshold
+  iou: 0.45                   # IoU threshold for NMS
+  device: "cpu"               # Device: "cpu", "0" (GPU), "mps" (Mac)
+
+# Training settings
+train:
+  data: "data/data.yaml"      # Dataset config path
+  epochs: 300                 # Number of training epochs
+  batch: 8                    # Batch size
+  patience: 100               # Early stopping patience
+  optimizer: "Adam"           # Optimizer
+  lr0: 0.001                  # Initial learning rate
+  lrf: 0.01                   # Final learning rate factor
+  momentum: 0.937             # Momentum
+  weight_decay: 0.0005        # Weight decay
+  warmup_epochs: 10           # Warmup epochs
+  
+  # Augmentation
+  augment: true
+  hsv_h: 0.015                # Hue augmentation
+  hsv_s: 0.7                  # Saturation augmentation
+  hsv_v: 0.4                  # Value augmentation
+  degrees: 10.0               # Rotation augmentation
+  translate: 0.1              # Translation augmentation
+  scale: 0.5                  # Scale augmentation
+  fliplr: 0.5                 # Horizontal flip
+  mosaic: 1.0                 # Mosaic augmentation
+  mixup: 0.3                  # Mixup augmentation
+  copy_paste: 0.3             # Copy-paste augmentation
+
+# Inference settings
+inference:
+  save: true                  # Save results
+  save_txt: false             # Save results as txt
+  save_conf: false            # Save confidence scores
+  show: false                 # Show results
+  
+# Weights & Biases
+wandb:
+  project: "bottle-cap-color-detection"
+  entity: null                # Your W&B username
+  enabled: true
+
+# Class names
+classes:
+  0: "light_blue"
+  1: "dark_blue"
+  2: "others"
+
+# Export settings (for edge deployment)
+export:
+  format: "ncnn"              # Export format: onnx, tflite, ncnn
+  imgsz: 192                  # Export image size
+  half: true                  # FP16 quantization
+  int8: false                 # INT8 quantization
