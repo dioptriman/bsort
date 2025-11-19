@@ -92,7 +92,7 @@ def run_batch_inference(
     """
     image_extensions = [".jpg", ".jpeg", ".png", ".bmp"]
     image_paths = []
-    
+
     for ext in image_extensions:
         image_paths.extend(Path(image_dir).glob(f"*{ext}"))
         image_paths.extend(Path(image_dir).glob(f"*{ext.upper()}"))
@@ -122,12 +122,12 @@ def visualize_result(
         Image with drawn bounding boxes.
     """
     img = cv2.imread(image_path)
-    
+
     # Color mapping for classes
     colors = {
-        0: (255, 200, 100),   # Light blue (BGR)
-        1: (255, 100, 50),    # Dark blue (BGR)
-        2: (100, 100, 100),   # Others (gray)
+        0: (255, 200, 100),  # Light blue (BGR)
+        1: (255, 100, 50),  # Dark blue (BGR)
+        2: (100, 100, 100),  # Others (gray)
     }
 
     for det in detections:
@@ -135,24 +135,19 @@ def visualize_result(
         class_name = det["class_name"]
         conf = det["confidence"]
         bbox = det["bbox"]
-        
+
         x1, y1, x2, y2 = map(int, bbox)
         color = colors.get(class_id, (0, 255, 0))
-        
+
         # Draw box
         cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
-        
+
         # Draw label
         label = f"{class_name} {conf:.2f}"
-        (label_w, label_h), _ = cv2.getTextSize(
-            label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1
-        )
-        cv2.rectangle(
-            img, (x1, y1 - label_h - 10), (x1 + label_w, y1), color, -1
-        )
+        (label_w, label_h), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)
+        cv2.rectangle(img, (x1, y1 - label_h - 10), (x1 + label_w, y1), color, -1)
         cv2.putText(
-            img, label, (x1, y1 - 5),
-            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1
+            img, label, (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1
         )
 
     if output_path:

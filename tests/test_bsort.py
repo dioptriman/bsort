@@ -22,9 +22,7 @@ class TestConfig:
 
     def test_load_config_valid(self):
         """Test loading a valid config file."""
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".yaml", delete=False
-        ) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
             config_data = {
                 "model": {"weights": "test.pt", "imgsz": 640},
                 "train": {"epochs": 100},
@@ -119,11 +117,13 @@ class TestCLI:
     def test_cli_import(self):
         """Test that CLI can be imported."""
         from bsort.cli import main
+
         assert main is not None
 
     def test_cli_version(self):
         """Test version is accessible."""
         from bsort import __version__
+
         assert __version__ is not None
         assert isinstance(__version__, str)
 
@@ -139,6 +139,7 @@ class TestInference:
             run_inference,
             visualize_result,
         )
+
         assert run_inference is not None
         assert run_batch_inference is not None
         assert visualize_result is not None
@@ -151,5 +152,6 @@ class TestTrain:
     def test_train_import(self):
         """Test that training module can be imported."""
         from bsort.train import export_model, train_model
+
         assert train_model is not None
         assert export_model is not None

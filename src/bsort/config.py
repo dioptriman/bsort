@@ -21,13 +21,13 @@ def load_config(config_path: str) -> dict[str, Any]:
         yaml.YAMLError: If config file is invalid YAML.
     """
     config_file = Path(config_path)
-    
+
     if not config_file.exists():
         raise FileNotFoundError(f"Config file not found: {config_path}")
-    
+
     with open(config_file, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
-    
+
     return config
 
 

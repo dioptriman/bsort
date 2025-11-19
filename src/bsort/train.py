@@ -107,12 +107,12 @@ def export_model(
         Path to exported model.
     """
     model = YOLO(model_path)
-    
+
     export_path = model.export(
         format=export_format,
         imgsz=imgsz,
         half=half,
         int8=int8,
     )
-    
+
     return str(export_path)

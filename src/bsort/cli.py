@@ -106,7 +106,7 @@ def infer(config: str, image: str, output: str, output_json: bool):
     if image_path.is_dir():
         # Batch inference
         results = run_batch_inference(cfg, str(image_path), output)
-        
+
         if output_json:
             click.echo(json.dumps(results, indent=2))
         else:
@@ -116,7 +116,7 @@ def infer(config: str, image: str, output: str, output_json: bool):
     else:
         # Single image inference
         result = run_inference(cfg, str(image_path), output)
-        
+
         if output_json:
             click.echo(json.dumps(result, indent=2))
         else:
@@ -128,7 +128,7 @@ def _print_result(result: dict):
     click.echo(f"Image: {result['image_path']}")
     click.echo(f"Inference time: {result['inference_time_ms']:.2f} ms")
     click.echo(f"Detections: {result['num_detections']}")
-    
+
     for det in result["detections"]:
         bbox = det["bbox"]
         click.echo(
@@ -169,9 +169,9 @@ def benchmark(config: str, image: str, runs: int):
     cfg = load_config(config)
 
     click.echo(f"Running benchmark with {runs} iterations...")
-    
+
     stats = benchmark_inference(cfg, image, n_runs=runs)
-    
+
     click.echo(f"\nBenchmark Results:")
     click.echo(f"  Mean:   {stats['mean_ms']:.2f} ms")
     click.echo(f"  Std:    {stats['std_ms']:.2f} ms")
@@ -219,7 +219,7 @@ def export(model: str, format: str, imgsz: int, half: bool, int8: bool):
     click.echo(f"Exporting model: {model}")
     click.echo(f"Format: {format}")
     click.echo(f"Image size: {imgsz}")
-    
+
     try:
         export_path = export_model(
             model_path=model,
